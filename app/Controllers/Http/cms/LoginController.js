@@ -17,7 +17,7 @@ class LoginController {
       return response.redirect('/dashboard')
     } else {
       session.flash({
-        notification: 'Kredensial salah, mohon periksa email atau password'
+        notification: 'Credential not match'
       })
       return response.redirect('back')
     }
