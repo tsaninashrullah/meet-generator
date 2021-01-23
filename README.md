@@ -1,7 +1,3 @@
-# KonterQ Backend / CMS
-
-This is the fullstack apps of konterQ
-
 ## Setup / Install
 
 First you need install adonis-cli.
