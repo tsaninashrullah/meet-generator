@@ -28,9 +28,11 @@ adonis serve --dev
 1. Superadmin : 
   username  : superadmin
   password  : 12345678
-  role      : superadmin 
 
-2. Admin Kita Cell :
-  username  : adminkita
+2. Creator 1 :
+  username  : creator1
   password  : 12345678
-  role      : admin konter
+
+2. Creator 2 :
+  username  : creator2
+  password  : 12345678
