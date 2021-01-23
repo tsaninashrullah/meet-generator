@@ -22,19 +22,23 @@ class DashboardController {
         errors: validation.messages()
       })
     } else {
-      const schedule = await Meeting.create(Object.assign({ user_id: session.get('user').id, start_date: moment(payloadBody.start_date).format('YYYY-MM-DD HH:mm'), end_date: moment(payloadBody.end_date).format('YYYY-MM-DD HH:mm') }, request.only(['description'])))
+      const payload = { user_id: session.get('user').id, start_date: moment(payloadBody.start_date).format('YYYY-MM-DD HH:mm'), end_date: moment(payloadBody.end_date).format('YYYY-MM-DD HH:mm'), ...request.only(['description']) }
+      console.log(payload, "------SCHEDULE-----")
+      const schedule = await Meeting.create(payload)
       return response.json({
         schedule: schedule.id
       })
     }
   }
-
+  
   async instantMeeting({ request, response, session }) {
-    const schedule = await Meeting.create({
+    const payload = {
       user_id: session.get('user').id,
       start_date: moment().format('YYYY-MM-DD HH:mm'),
       end_date: moment().add(4, 'hours').format('YYYY-MM-DD HH:mm'),
-    })
+    }
+    const schedule = await Meeting.create(payload)
+    console.log(payload, "------INSTANT-----")
     return response.json({
       schedule: schedule.id
     })
