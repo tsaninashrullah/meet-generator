@@ -1,0 +1,42 @@
+@layout('layouts.main')
+@section('title')
+    <title>{{APP_NAME}}</title>
+@endsection
+@section('styles')
+<style>
+</style>
+@endsection
+@section('content')
+<!-- Main content -->
+<section class="content">
+    <div class="center-content">
+        <div id="meet-start">
+            <label for="">Enter your name :</label>
+            <input type="text" class="form-control" name="name">
+            <button type="button" style="margin-top: 8px;" id="start-btn" class="btn btn-success"><i class="fa fa-sign-in"></i> Start</button>
+        </div>
+        <div id="meet-frame" style="display: none;">
+            <h3>{{ data.id }}</h3>
+            <div id="meet-frame-video"></div>
+            <div id="toolbox" class="toolbox" style="display:none;">
+                <button id='btnHangup'>End Call</button>
+                <button id='btnCustomMic'>Mic</button>
+                <button id='btnCustomCamera'>Camera</button>
+            </div>
+        </div>
+        <div id="meet-final" style="display: none;">
+            <h3>Thank u for using.</h3>
+            <a href="/">Back to Home.</a>
+            <button type="button" style="margin-top: 8px;" id="rejoin-btn" class="btn btn-success"><i class="fa fa-undo"></i> Rejoin</button>
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+@endsection
+@section('scripts')
+<script>
+    const roomCode = '{{ data.id }}'
+</script>
+<script src="https://meet.jit.si/external_api.js"></script>
+<script src="/js/join.js"></script>
+@endsection

@@ -1,0 +1,66 @@
+.clickable {
+  cursor: pointer;
+}
+
+.add-wrapper {
+  text-align: right;
+  margin-bottom: 16px;
+}
+
+
+/* .btn-group .dropdown-menu {
+  padding: 8px;
+} */
+
+.btn-group.open .dropdown-menu {
+  display: grid;
+  padding: 0px;
+}
+
+.btn-group .dropdown-menu .dropdown-item {
+  color: #000;
+  padding: 8px;
+}
+
+.btn-group .dropdown-menu .dropdown-item:hover {
+  background-color: #cccccc;
+}
+
+.modal-title {
+  display: contents;
+}
+
+.center-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+@media only screen and (max-width: 720px) {
+  .desktop-only {
+    display: none;
+  }
+}
+
+#meet-frame {
+  position: relative;
+  ;
+  min-width: 640px;
+  height: 520px;
+}
+
+.toolbox {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 50px;
+}
+
+@media only screen and (max-width: 720px) {
+  #meet-frame {
+    min-width: 300px;
+  }
+}

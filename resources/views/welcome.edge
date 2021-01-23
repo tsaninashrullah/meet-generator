@@ -1,0 +1,43 @@
+@layout('layouts.main')
+@section('title')
+    <title>{{APP_NAME}}</title>
+@endsection
+@section('content')
+<!-- Main content -->
+<section class="content" style="padding: 24px;">
+    <table class="table table-bordered table-hover" width="100%" id="table-room">
+        <thead>
+            <tr>
+                <th class="desktop-only text-center">Room Code</th>
+                <th class="text-center">Start Date</th>
+                <th class="text-center">End Date</th>
+                <th class="text-center">Author</th>
+                <th class="desktop-only text-center">Description</th>
+                <th class="text-center">Action</th>
+            </tr>
+        </thead>
+    </table>
+    <div class="center-content" style="display: none;">
+        <div class="landing-page" style="display: none;">
+            <h2>Welcome</h2>
+            <h3>please fill the room code : </h3>
+            <input type="text" class="form-control" name="roomCode">
+            <button style="margin-top: 8px;" id="search-btn" class="btn btn-success"><i class="fa fa-search"></i> Search Room</button>
+        </div>
+        <div class="detail-room" style="display:none">
+            <h2 class="room-name"></h2>
+            <p class="start-date"></p>
+            <p class="end-date"></p>
+            <p class="description"></p>
+            <div class="btn-wrapper" style="margin-top: 8px;">
+                <button id="back-btn" class="btn btn-default"><i class="fa fa-undo"></i> Back</button>
+                <button id="join-btn" class="btn btn-success"><i class="fa fa-sign-in"></i> Join</button>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.content -->
+@endsection
+@section('scripts')
+<script src="/js/home.js"></script>
+@endsection

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    @!section('title')
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    {{ style('bower_components/bootstrap/dist/css/bootstrap.min.css') }}
+    <!-- Font Awesome -->
+    {{ style('bower_components/font-awesome/css/font-awesome.min.css') }}
+    <!-- Ionicons -->
+    {{ style('bower_components/Ionicons/css/ionicons.min.css') }}
+    <!-- Theme style -->
+    {{ style('css/AdminLTE.min.css') }}
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+        folder instead of downloading all of them to reduce the load. -->
+    {{ style('css/skins/_all-skins.min.css') }}
+    <!-- jvectormap -->
+    {{ style('bower_components/jvectormap/jquery-jvectormap.css') }}
+    <!-- Date Picker -->
+    {{ style('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}
+    <!-- Daterange picker -->
+    {{ style('bower_components/bootstrap-daterangepicker/daterangepicker.css') }}
+    {{ style('bower_components/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css') }}
+    <!-- bootstrap wysihtml5 - text editor -->
+    {{ style('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}
+    {{ style('plugins/datatables/datatables.min.css') }}
+    <!-- Theme style -->
+    {{ style('css/custom.css') }}
+    @!section('styles')
+    <style>
+        .content-wrapper {
+            margin-left: 0px;
+        }
+        .content {
+            min-height: 100vh;
+            padding-bottom: 0px;
+        }
+        body {
+            overflow: hidden;
+        }
+    </style>
+
+    <!-- Google Font -->
+    {{ style('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic') }}
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section class="content">
+                <div class="row">
+                    @!section('content')
+                </div>
+            </section>
+        </div>
+        
+        @include('layouts.footer')
+        <!-- Add the sidebar's background. This div must be placed
+            immediately after the control sidebar -->
+        <div class="control-sidebar-bg"></div>
+    </div>
+    <!-- ./wrapper -->
+
+    <!-- jQuery 3 -->
+    {{ script('bower_components/jquery/dist/jquery.min.js') }}
+    <!-- jQuery UI 1.11.4 -->
+    {{ script('bower_components/jquery-ui/jquery-ui.min.js') }}
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+    $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 3.3.7 -->
+    {{ script('bower_components/bootstrap/dist/js/bootstrap.min.js') }}
+    {{ script('plugins/jquery-block-ui/jquery-block-ui.min.js') }}
+    <!-- daterangepicker -->
+    {{ script('bower_components/moment/min/moment.min.js') }}
+    {{ script('bower_components/bootstrap-daterangepicker/daterangepicker.js') }}
+    <!-- datepicker -->
+    {{ script('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}
+    {{ script('bower_components/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}
+    <!-- Bootstrap WYSIHTML5 -->
+    {{ script('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}
+    <!-- Slimscroll -->
+    {{ script('bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}
+    <!-- FastClick -->
+    {{ script('bower_components/fastclick/lib/fastclick.js') }}
+    {{ script('plugins/sweet-alert/sweet-alert.min.js') }}
+    {{ script('plugins/datatables/datatables.min.js') }}
+    <!-- AdminLTE App -->
+    {{ script('js/adminlte.min.js') }}
+
+    @!section('scripts')
+</body>
+</html>

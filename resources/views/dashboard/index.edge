@@ -1,0 +1,122 @@
+@layout('layouts.master')
+@section('title')
+    <title>{{APP_NAME}} | Dashboard</title>
+@endsection
+@section('content')
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        Dashboard
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+    <!-- Main row -->
+    <div class="row">
+        <!-- Left col -->
+        <section class="col-lg-12 connectedSortable">
+            <!-- Calendar -->
+            <div class="box box-solid bg-blue">
+                <div class="box-header">
+                    <i class="fa fa-calendar"></i>
+                    <h3 class="box-title">Meeting</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="box-footer text-black">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-12">
+                                <div class="btn-group" role="group">
+                                    <button id="btn-group-meeting" type="button" class="btn btn-secondary btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Start Meeting</button>
+                                    <div class="dropdown-menu" aria-labelledby="btn-group-meeting">
+                                        <a class="dropdown-item" id="instant-btn" href="#"><i class="fa fa-plus"></i> Start Instant Meeting</a>
+                                        <a class="dropdown-item" id="schedule-btn" href="#"><i class="fa fa-calendar"></i> Schedule Meeting</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-10 col-sm-12">
+                                <table class="table table-bordered table-hover" id="table-room">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">Room Code</th>
+                                            <th class="text-center">Tanggal Mulai</th>
+                                            <th class="text-center">Tanggal Selesai</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box -->
+        </section>
+        <!-- /.Left col -->
+    </div>
+    <!-- /.row (main row) -->
+
+    </section>
+</section>
+<!-- /.content -->
+
+<!-- Modal -->
+<div class="modal fade" id="schedule-modal-form" tabindex="-1" role="dialog" aria-labelledby="schedule-modal-formLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Schedule Meeting</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('dashboard.schedule') }}" id="schedule-form">
+                    {{csrfField()}}
+                    <div class="row">
+                        <div class='col-md-6'>
+                            <div class="form-group">
+                                <label for="">Start Date</label>
+                                <div class='input-group date' id='start-datepicker'>
+                                    <input type='text' class="form-control" name="start_date" />
+                                    <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='col-md-6'>
+                            <div class="form-group">
+                                <label for="">End Date</label>
+                                <div class='input-group date' id='end-datepicker'>
+                                    <input type='text' class="form-control" name="end_date"/>
+                                    <span class="input-group-addon">
+                                    <span class="fa fa-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="">Description</label>
+                            <textarea name="description" class="form-control" id="" cols="30" rows="10"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="submit-btn" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('scripts')
+<script src="/js/dashboard.js"></script>
+@endsection

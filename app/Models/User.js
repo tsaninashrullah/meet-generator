@@ -1,0 +1,51 @@
+'use strict'
+
+/** @type {import('@adonisjs/framework/src/Hash')} */
+const Hash = use('Hash')
+
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+const Model = use('Model')
+
+class User extends Model {
+  static boot() {
+    super.boot()
+
+    /**
+     * A hook to hash the user password before saving
+     * it to the database.
+     */
+    this.addHook('beforeSave', async (userInstance) => {
+      if (userInstance.dirty.password) {
+        userInstance.password = await Hash.make(userInstance.password)
+      }
+    })
+  }
+
+  /**
+   * A relationship on tokens is required for auth to
+   * work. Since features like `refreshTokens` or
+   * `rememberToken` will be saved inside the
+   * tokens table.
+   *
+   * @method tokens
+   *
+   * @return {Object}
+   */
+  tokens() {
+    return this.hasMany('App/Models/Token')
+  }
+
+  role() {
+    return this.belongsTo('App/Models/Role')
+  }
+
+  static scopeShortProfile(query, isWithPassword = false) {
+    let selectedField = ['id', 'full_name', 'email', 'username', 'store_id', 'role_id']
+    if (isWithPassword) {
+      selectedField.push('password')
+    }
+    return query.select(selectedField)
+  }
+}
+
+module.exports = User
