@@ -48,7 +48,7 @@ class DashboardController {
     }
     const count = await query.getCount()
     const data = await query.orderBy('start_date', 'desc').offset(parseInt(payload.start)).limit(parseInt(payload.length)).fetch()
-    console.log(data, "----DATA")
+    // console.log(data, "----DATA")
     return response.json({
       data,
       recordsFiltered: count,
