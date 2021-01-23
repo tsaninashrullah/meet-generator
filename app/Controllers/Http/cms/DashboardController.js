@@ -22,7 +22,6 @@ class DashboardController {
         errors: validation.messages()
       })
     } else {
-      console.log(moment(payloadBody.start_date).format('YYYY-MM-DD HH:mm'), "-----------START DATE")
       const schedule = await Meeting.create(Object.assign({ user_id: session.get('user').id, start_date: moment(payloadBody.start_date).format('YYYY-MM-DD HH:mm'), end_date: moment(payloadBody.end_date).format('YYYY-MM-DD HH:mm') }, request.only(['description'])))
       return response.json({
         schedule: schedule.id
@@ -49,6 +48,7 @@ class DashboardController {
     }
     const count = await query.getCount()
     const data = await query.orderBy('start_date', 'desc').offset(parseInt(payload.start)).limit(parseInt(payload.length)).fetch()
+    console.log(data, "----DATA")
     return response.json({
       data,
       recordsFiltered: count,
