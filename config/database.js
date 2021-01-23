@@ -8,6 +8,14 @@ const Helpers = use('Helpers')
 const Url = require('url-parse')
 const CLEARDB_DATABASE_URL = new Url(Env.get('CLEARDB_DATABASE_URL'))
 
+if (!process.env.APP_KEY) {
+  const dotenv = require('dotenv')
+  // dotenv, but i need this make the database work
+  const envConfig = dotenv.config({silent: true})
+
+  console.log('[api][sequelize] Loaded database ENV vars from .env file')
+}
+
 module.exports = {
   /*
   |--------------------------------------------------------------------------

@@ -18,6 +18,7 @@
 */
 
 const { Ignitor } = require('@adonisjs/ignitor')
+require('dotenv').config({ path: __dirname + '/.env' })
 
 new Ignitor(require('@adonisjs/fold'))
   .appRoot(__dirname)
