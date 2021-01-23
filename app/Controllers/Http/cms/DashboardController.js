@@ -22,7 +22,7 @@ class DashboardController {
         errors: validation.messages()
       })
     } else {
-      const schedule = await Meeting.create(Object.assign({ user_id: session.get('user').id }, request.only(['start_date', 'end_date', 'description'])))
+      const schedule = await Meeting.create(Object.assign({ user_id: session.get('user').id, start_date: moment(payloadBody.start_date).format('YYYY-MM-DD HH:mm'), end_date: moment(payloadBody.end_date).format('YYYY-MM-DD HH:mm') }, request.only(['description'])))
       return response.json({
         schedule: schedule.id
       })
