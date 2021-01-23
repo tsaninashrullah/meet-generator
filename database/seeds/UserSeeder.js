@@ -14,7 +14,7 @@
 const Factory = use('Factory')
 const User = use('App/Models/User')
 const Role = use('App/Models/Role')
-
+require('dotenv').config({ path: __dirname + '/.env' })
 class UserSeeder {
   async run() {
     const roleRecord = await Role.findOrCreate({ slug: 'superadmin' }, {
