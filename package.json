@@ -33,6 +33,7 @@
     "@radmen/adonis-lucid-soft-deletes": "^0.1.2",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
+    "moment-timezone": "^0.5.32",
     "mysql": "^2.18.1",
     "passport-http-bearer": "^1.0.1",
     "pg": "^7.12.0",

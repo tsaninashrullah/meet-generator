@@ -1,6 +1,6 @@
 'use strict'
 const { validateAll } = use('Validator')
-const moment = use('moment')
+const moment = use('moment-timezone')
 const Meeting = use('App/Models/Meeting')
 
 class DashboardController {
@@ -22,7 +22,7 @@ class DashboardController {
         errors: validation.messages()
       })
     } else {
-      const schedule = await Meeting.create(Object.assign({ user_id: session.get('user').id, start_date: moment(payloadBody.start_date).format('YYYY-MM-DD HH:mm'), end_date: moment(payloadBody.end_date).format('YYYY-MM-DD HH:mm') }, request.only(['description'])))
+      const schedule = await Meeting.create(Object.assign({ user_id: session.get('user').id, start_date: moment(payloadBody.start_date).tz('Asia/Jakarta').format('YYYY-MM-DD HH:mm'), end_date: moment(payloadBody.end_date).tz('Asia/Jakarta').format('YYYY-MM-DD HH:mm') }, request.only(['description'])))
       return response.json({
         schedule: schedule.id
       })
@@ -32,8 +32,8 @@ class DashboardController {
   async instantMeeting({ request, response, session }) {
     const schedule = await Meeting.create({
       user_id: session.get('user').id,
-      start_date: moment().format('YYYY-MM-DD HH:mm'),
-      end_date: moment().add(4, 'hours').format('YYYY-MM-DD HH:mm'),
+      start_date: moment().tz('Asia/Jakarta').format('YYYY-MM-DD HH:mm'),
+      end_date: moment().tz('Asia/Jakarta').add(4, 'hours').format('YYYY-MM-DD HH:mm'),
     })
     return response.json({
       schedule: schedule.id
