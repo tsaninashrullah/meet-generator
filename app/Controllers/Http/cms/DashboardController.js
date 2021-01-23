@@ -22,7 +22,7 @@ class DashboardController {
         errors: validation.messages()
       })
     } else {
-      const payload = { user_id: session.get('user').id, start_date: moment(payloadBody.start_date).format('YYYY-MM-DD HH:mm'), end_date: moment(payloadBody.end_date).format('YYYY-MM-DD HH:mm'), ...request.only(['description']) }
+      const payload = { user_id: session.get('user').id, start_date: moment(payloadBody.start_date).tz('Asia/Jakarta').utc().format('YYYY-MM-DD HH:mm'), end_date: moment(payloadBody.end_date).tz('Asia/Jakarta').utc().format('YYYY-MM-DD HH:mm'), ...request.only(['description']) }
       console.log(payload, "------SCHEDULE-----")
       const schedule = await Meeting.create(payload)
       return response.json({
