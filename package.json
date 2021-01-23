@@ -1,5 +1,5 @@
 {
-  "name": "konter-q",
+  "name": "conference-generator",
   "version": "4.1.0",
   "adonis-version": "4.1.0",
   "description": "The self service apps for purchase balance.",
@@ -42,5 +42,8 @@
   "devDependencies": {},
   "autoload": {
     "App": "./app"
+  },
+  "engines": {
+    "node": "14.15.1"
   }
 }
